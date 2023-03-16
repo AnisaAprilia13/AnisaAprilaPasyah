@@ -1,7 +1,11 @@
 package com.anisaaprilia;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,20 +30,26 @@ public class MainActivity extends AppCompatActivity {
         LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = UsernameEditText.getText().toString();
-                String password = PasswordEditText.getText().toString();
-
-                if (username.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Mohon lengkapi semua field!", Toast.LENGTH_SHORT).show();
-                } else {
-
-                    Intent i = new Intent(MainActivity.this, BerhasilLogin.class);
-                    i.putExtra("username", username);
-                    startActivity(i);
-                }
-
-
+                showAlert();
             }
         });
+    }
+
+    private void showAlert() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Alert");
+        builder.setMessage("Apakah anda yakin ingin masuk?");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Tambahkan logika yang diinginkan di sini
+                Log.d("Alert", "Berhasil masuk");
+                // Intent untuk membuka RegisterActivity
+                Intent intent = new Intent(MainActivity.this, BerhasilLogin.class);
+                startActivity(intent);
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

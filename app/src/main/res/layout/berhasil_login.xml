@@ -23,4 +23,16 @@
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"/>
 
+    <Button
+        android:id="@+id/homeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Masuk ke home"
+        android:textColor="@color/white"
+        android:backgroundTint="#4CAF50"
+        android:textStyle="bold"
+        android:layout_below="@+id/usernameTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"/>
+
 </RelativeLayout>
